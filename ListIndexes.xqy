@@ -3,6 +3,8 @@ xquery version "1.0-ml";
 (:~ 
  : XQuery tools
  : Different tools I've written for working in MarkLogic's XQuery environment.
+ : 
+ : Example invocation:  xtools:listIndexes(("ELEMENT","PATH"), "FM")
  :
  : @author   Matthew Royal 
  : @see      https://github.com/masyukun/xquery-tools
@@ -46,7 +48,6 @@ declare function xtools:listIndexes($indexTypes as xs:string+, $dbNames as xs:st
 
     (: Output the row data found for this index type :)
     for $index in $indexes
-    order by $index/element()[1] ascending, $index/element()[2] ascending, $index/element()[3] ascending
     return 
       string-join(
         (
@@ -58,3 +59,4 @@ declare function xtools:listIndexes($indexTypes as xs:string+, $dbNames as xs:st
       )
   )
 };
+
